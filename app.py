@@ -4,8 +4,20 @@ from custom_prompt import TexRestructureTemplate,MetadataTemplate
 import ast
 from gpt import get_chat_completion
 import openai
-
-
+openAiKey = st.text_input(label="Input the openai key", type="password")
+openai.api_key = openAiKey
+def get_chat_completion(prompt, model="gpt-3.5-turbo"):
+    try:
+        response = openai.ChatCompletion.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": prompt}
+            ]
+        )
+        return response['choices'][0]['message']['content']
+    except Exception as e:
+        return str(e)
 def main():
     st.sidebar.markdown("""
     <style>
@@ -68,13 +80,11 @@ def main():
 
     # Get the link input from the user
     link = st.text_input("Enter the link to the JEE Main physics question:")
-    openAiKey = st.text_input(label="Input the openai key", type="password")
     if st.button("Submit"):
         if link:
             try:
                 ques,ans = parsing.parse(link)
                 print("Checkpoint-1")
-                openai.api_key = openAiKey
                 restructure_prompt = TexRestructureTemplate()
                 q_restruct_prompt = restructure_prompt.format(content=ques)
                 question = get_chat_completion(q_restruct_prompt)
