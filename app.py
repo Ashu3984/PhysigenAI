@@ -2,7 +2,7 @@ import streamlit as st
 import parsing
 from custom_prompt import TexRestructureTemplate,MetadataTemplate
 import ast
-from gpt import get_chat_completion
+# from gpt import get_chat_completion
 import openai
 openAiKey = st.text_input(label="Input the openai key", type="password")
 openai.api_key = openAiKey
