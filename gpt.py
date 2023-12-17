@@ -1,5 +1,4 @@
-import openai
-openai.api_key = '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'
+
 def get_chat_completion(prompt, model="gpt-3.5-turbo"):
     try:
         response = openai.ChatCompletion.create(
