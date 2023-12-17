@@ -3,7 +3,7 @@ import parsing
 from custom_prompt import TexRestructureTemplate,MetadataTemplate
 import ast
 from gpt import get_chat_completion
-
+import openai
 
 
 def main():
@@ -68,12 +68,13 @@ def main():
 
     # Get the link input from the user
     link = st.text_input("Enter the link to the JEE Main physics question:")
-
+    openAiKey = st.text_input(label="Input the openai key", type="password")
     if st.button("Submit"):
         if link:
             try:
                 ques,ans = parsing.parse(link)
                 print("Checkpoint-1")
+                openai.api_key = openAiKey
                 restructure_prompt = TexRestructureTemplate()
                 q_restruct_prompt = restructure_prompt.format(content=ques)
                 question = get_chat_completion(q_restruct_prompt)
