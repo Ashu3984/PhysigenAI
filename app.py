@@ -1,5 +1,6 @@
 import streamlit as st
 import parsing
+import json
 from custom_prompt import TexRestructureTemplate,MetadataTemplate
 import ast
 # from gpt import get_chat_completion
@@ -120,11 +121,19 @@ def main():
                                 "explanation": explanation,
                                 "metadata": metadata
                             }
-
+                
+                json_string = json.dumps(output_data, indent=2)
                 # Display the combined data as JSON
                 st.subheader("Link Result")
-                st.json(output_data)
+                st.json(json_string)
 
+                st.download_button(
+                label="Download JSON",
+                data=json_string,
+                file_name="output_data.json",
+                mime="application/json"
+            )
+                
             except Exception as e:
                 st.error(f"Error: {e}")
         else:
