@@ -122,7 +122,7 @@ def main():
                                 "metadata": metadata
                             }
                 
-                json_string = json.dumps(output_data, indent=2)
+                json_string = json.dumps(output_data, indent=2,ensure_ascii=False)
                 # Display the combined data as JSON
                 st.subheader("Link Result")
                 st.json(json_string)
