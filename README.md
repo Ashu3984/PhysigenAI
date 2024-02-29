@@ -7,8 +7,6 @@ PHYSIGEN is an AI-driven educational tool designed to enhance learning and prepa
 - **Question Generation**: Utilizes fine-tuned LLM to generate relevant and challenging physics questions tailored for JEE Main exam preparation.
 - **Scalability**: Currently scaling up the question dataset to enhance tool effectiveness and broaden impact, ensuring a comprehensive coverage of topics.
 - **Technological Stack**: Employs a variety of advanced AI techniques and technologies, including Streamlit, Gradio, PEFT, Langchain, FASTapi, and HuggingFace.
-- **Technical Skills**: Proficient in LLM, fine-tuning, Beautiful Soup, prompt engineering, and various AI frameworks and libraries.
-- **Soft Skills**: Strong emphasis on teamwork, time management, and presentation skills, ensuring effective collaboration and communication.
 
 ## Usage
 
